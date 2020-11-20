@@ -1,16 +1,26 @@
-import {createRouter, createWebhistory} from 'vue-router';
+import {createRouter, createWebHistory} from 'vue-router';
+import CouchDetail from './pages/couches/CouchDetail.vue';
+import CouchesList from './pages/couches/CouchesList.vue';
+import CouchRegistration from './pages/couches/CouchRegistration.vue';
+import ContactCouch from './pages/requests/ContactCouch.vue';
+import RequestReceived from './pages/requests/RequestReceived.vue';
+import NotFound from './pages/NotFound.vue';
+
+
+
 
 const router = createRouter({
-    history: createWebhistory(),
+    history: createWebHistory(),
     routes:[
-        {path: '/couches', component: null},
-        {path: '/couches/:id', component: null,
+        {path: '/', redirect: '/couches'},
+        {path: '/couches', component: CouchesList},
+        {path: '/couches/:id', component: CouchDetail,
             children: [
-                {path:'contact',component: null}
+                {path:'contact',component: ContactCouch}
             ]},
-        {path: '/register', componebts: null},
-        {path: '/requests', componebts: null},
-        {path: '/:notFound(.*)', componebts: null},
+        {path: '/register', componebts: CouchRegistration},
+        {path: '/requests', componebts: RequestReceived},
+        {path: '/:notFound(.*)', componebts: NotFound},
     ],
 });
 
