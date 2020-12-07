@@ -1,3 +1,3 @@
 <template>
-    requests
+    register
 </template>
